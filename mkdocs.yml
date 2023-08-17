@@ -1,0 +1,72 @@
+site_name: Inferência Estatística
+site_url: https://adamesalles.github.io/statistical-inference
+repo_name: adamesalles/statistical-inference
+repo_url: https://github.com/adamesalles/statistical-inference
+
+not_in_nav:
+  index.md
+
+theme:
+  name: material
+  icon:
+    logo: material/book
+#  favicon: assets/favicon.png
+  language: pt-BR
+  features:
+#    - navigation.tabs
+#    - content.tabs.link
+#    - navigation.top
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+
+extra_javascript:
+  - js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Don't be scared...
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.extra
+  - meta
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - def_list
+  - attr_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# I told you
+
+extra:
+  homepage: https://adamesalles.github.io/statistical-inference
+  generator: false
+
+copyright: Feito com ❤ por Eduardo Adame & Ezequiel Braga @ FGV EMAp

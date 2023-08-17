@@ -1,5 +1,7 @@
 # Statistical Inference - EMAp 2023
 
+Visit the [website](https://adamesalles.github.io/statistical-inference).
+
 Staff:
 
 - Professor PhD. Philip Thompson
