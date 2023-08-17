@@ -1,0 +1,271 @@
+\documentclass[leqno, 12pt]{article}
+
+
+\usepackage[brazil]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{cancel} 
+\usepackage[inline, shortlabels]{enumitem}
+\usepackage{xifthen} 
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{mathpazo}
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \setlength{\parindent}{12 pt}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+% Objetos que aparecem *após* o ambiente; 
+% nestas configurações, estamos desenhando uma 
+% linha horizontal. 
+% (você pode, por exemplo, modificar 
+% ou remover este elemento gráfico) 
+{\noindent\rule{4cm}{.1mm}}
+
+% Tamanho dos símbolos matemáticos
+% \DeclareMathSizes{12}{12}{12}{9}
+
+\begin{document}
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+
+
+
+\title{Lista de Exercícios 1}
+
+\author{Disciplina: Inferência Estatística \\
+        Monitores: Ezequiel Braga \& Eduardo Adame}
+
+\date{Agosto 2023}
+
+\maketitle
+
+\section*{Cap. 6.2 (Revisão de Probabilidade)}
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[1, pág 358]} Para cada inteiro \( n \), seja \( X_n \) uma variável aleatória não negativa com média finita \( \mu_n \).
+Prove que se \( \lim_{{n \to \infty}} \mu_n = 0 \), então \( X_n \overset{p}{\to} 0 \).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[6, pág 359]} Suponha que \( X_1, \ldots , X_n \) formem uma amostra aleatória de tamanho \( n \) de uma distribuição na qual a média é 6.5 e a variância é 4.
+Determine qual deve ser o valor de \( n \) para que a seguinte relação seja satisfeita: \( \Pr(6 \leq X_n \leq 7) \geq 0.8 \).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[9, pág 359]} Sejam \( Z_1, Z_2, \ldots \) uma sequência de variáveis aleatórias e suponha que, para \( n = 1, 2, \ldots \), a distribuição de \( Z_n \) seja a seguinte: \( \Pr(Z_n = n^2) = \frac{1}{n} \) e \( \Pr(Z_n = 0) = 1 - \frac{1}{n} \). Mostre que \( \lim_{{n \to \infty}} E(Z_n) = \infty \), mas \( Z_n \) convergindo em probabilidade para 0.
+
+\end{enumerate}
+
+\section*{Cap. 6.3 (Revisão de Probabilidade)}
+
+\begin{enumerate}
+
+\setcounter{enumi}{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[3, pág 370]} Suponha que a distribuição do número de defeitos em qualquer pedaço de tecido seja a distribuição de Poisson com média 5, e o número de defeitos em cada pedaço de tecido é contado para uma amostra aleatória de 125 pedaços. Determine a probabilidade de que a média do número de defeitos por pedaço na amostra seja menor que 5.5.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[15, pág 370]} Sejam \(X_1, X_2, \ldots\) uma sequência de variáveis aleatórias independentes e identicamente distribuídas (i.i.d.), cada uma tendo a distribuição uniforme no intervalo \([0, \theta]\) para algum número real \(\theta > 0\). Para cada \(n\), defina \(Y_n\) como o máximo de \(X_1, X_2, \ldots, X_n\).
+
+\begin{enumerate}
+    \item Mostre que a função de distribuição acumulada (c.d.f.) de \(Y_n\) é dada por:
+
+        \[
+        F_n(y) =
+        \begin{cases}
+        0 & \text{se } y \leq 0, \\
+        \left(\frac{y}{\theta}\right)^n & \text{se } 0 < y < \theta, \\
+        1 & \text{se } y > \theta.
+        \end{cases}
+        \]
+        
+        Dica: Leia o Exemplo 3.9.6.
+
+    \item Mostre que \( Z_n = n(Y_n - \theta) \) converge em distribuição para a distribuição com a função de distribuição acumulada (c.d.f.).
+
+        \[ F^*(z) = \begin{cases}
+        e^{\frac{z}{\theta}} & \text{if } z < 0, \\
+        1 & \text{if } z > 0.
+        \end{cases} \]
+        
+        Dica: Aplique o Teorema 5.3.3 após encontrar a função de distribuição acumulada (c.d.f.) de \( Z_n \).
+
+    \item Use o Teorema 6.3.2 para encontrar a distribuição aproximada de \(Y_{n}^2\) quando \(n\) é grande.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Cap. 7.5 (Estimador de Máxima Verossimilhança)}
+
+\begin{enumerate}
+
+\setcounter{enumi}{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[1, pág 425]} Sejam \(x_1, \ldots , x_n\) números distintos. Seja \(Y\) uma variável aleatória discreta com a seguinte função de probabilidade (p.f.):
+\[ f(y) = \begin{cases}
+1/n & \text{se } y \in \{x_1, \ldots , x_n\}, \\
+0 & \text{caso contrário}.
+\end{cases} \]
+Prove que \(Var(Y) = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar x_n)^2 \).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[4, pág 425]} Suponha que \( X_1, \ldots , X_n \) formem uma amostra aleatória de uma distribuição Bernoulli com parâmetro \( \theta \), que é desconhecido, mas sabe-se que \( \theta \) está no intervalo aberto \( 0 < \theta < 1 \). Mostre que o Estimador de Máxima Verossimilhança (M.L.E.) de \( \theta \) não existe se todos os valores observados forem 0 ou se todos os valores observados forem 1.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[9, pág 425]} Suponha que \(X_1, \ldots , X_n\) formem uma amostra aleatória de uma distribuição para a qual a função de densidade de probabilidade (p.d.f.) \(f(x|\theta)\) é a seguinte:
+\[ f(x\mid\theta) = \begin{cases}
+\theta x^{\theta-1} & \text{para } 0 < x < 1, \\
+0 & \text{caso contrário}.
+\end{cases} \]
+Além disso, suponha que o valor de \( \theta \) é desconhecido (\( \theta > 0 \)). Encontre o Estimador de Máxima Verossimilhança (M.L.E.) de \( \theta \).
+
+\end{enumerate}
+
+\section*{Cap. 7.6 (Método dos Momentos)}
+
+\begin{enumerate}
+
+\setcounter{enumi}{8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[20, pág 442]} Prove que o estimador do método dos momentos da média de uma distribuição de Poisson é o Estimador de Máxima Verossimilhança (M.L.E.).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 10 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[22, pág 442]} Sejam \(X_1, \ldots , X_n\) uma amostra aleatória da distribuição uniforme no intervalo \([0, \theta]\).
+
+\begin{enumerate}
+    \item Encontre o estimador do método dos momentos de \( \theta \).
+
+    \item Mostre que o estimador do método dos momentos não é o Estimador de Máxima Verossimilhança (M.L.E.).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 11 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{[23, pág 442]} Suponha que \(X_1, \ldots , X_n\) formem uma amostra aleatória da distribuição beta com parâmetros \( \alpha \) e \( \beta \). Seja \( \theta = (\alpha, \beta) \) o vetor de parâmetros.
+
+\begin{enumerate}
+    \item Encontre o estimador do método dos momentos de \( \theta \).
+\end{enumerate}
+
+\end{enumerate}
+
+\newpage
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
+
+
