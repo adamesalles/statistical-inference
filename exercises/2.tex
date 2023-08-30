@@ -1,0 +1,222 @@
+\documentclass[leqno, 12pt]{article}
+
+
+\usepackage[brazil]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{cancel} 
+\usepackage[inline, shortlabels]{enumitem}
+\usepackage{xifthen} 
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{mathpazo}
+\usepackage[style=authoryear]{biblatex}
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \setlength{\parindent}{12 pt}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+% Objetos que aparecem *após* o ambiente; 
+% nestas configurações, estamos desenhando uma 
+% linha horizontal. 
+% (você pode, por exemplo, modificar 
+% ou remover este elemento gráfico) 
+{\noindent\rule{4cm}{.1mm}}
+
+% Tamanho dos símbolos matemáticos
+% \DeclareMathSizes{12}{12}{12}{9}
+
+\addbibresource{references.bib}
+
+
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+
+
+
+\title{Lista de Exercícios 2}
+
+\author{Disciplina: Inferência Estatística \\
+        Monitores: Eduardo Adame \& Ezequiel Braga}
+
+\date{Agosto 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Cap. 7.6 (Invariância e Consistência do MLE)}
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 3, pág. 441]{DeGroot:2014}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória de uma distribuição exponencial para a qual o valor do parâmetro $\beta$ é desconhecido. Determine o Estimador de Máxima Verossimilhança (MLE) da mediana da distribuição.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 4, pág. 441]{DeGroot:2014}} Suponha que a vida útil de um certo tipo de lâmpada siga uma distribuição exponencial para a qual o valor do parâmetro $\beta$ é desconhecido. Uma amostra aleatória de $n$ lâmpadas desse tipo é testada por um período de $T$ horas e o número $X$ de lâmpadas que falham durante esse período é observado, mas os momentos em que as falhas ocorreram não são registrados. Determine o Estimador de Máxima Verossimilhança (MLE) de $\beta$ com base no valor observado de $X$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 5, pág. 441]{DeGroot:2014}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória da distribuição uniforme no intervalo $[a, b]$, onde ambos os pontos finais $a$ e $b$ são desconhecidos. Encontre o Estimador de Máxima Verossimilhança (MLE) da média da distribuição.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 11, pág. 441]{DeGroot:2014}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória de tamanho $n$ da distribuição uniforme no intervalo $[0, \theta]$, onde o valor de $\theta$ é desconhecido. Mostre que a sequência de Estimadores de Máxima Verossimilhança (MLE) de $\theta$ é uma sequência consistente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 12, pág. 441]{DeGroot:2014}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória de tamanho $n$ da distribuição exponencial com parâmetro desconhecido $\beta$. Mostre que a sequência de Estimadores de Máxima Verossimilhança (MLE) de $\beta$ é uma sequência consistente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 13, pág. 442]{DeGroot:2014}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória de uma distribuição para a qual a função de densidade de probabilidade é especificada a seguir:
+
+\[ f(x|\theta) = \begin{cases}
+\theta x^{\theta-1} & \text{para } 0 < x < 1, \\
+0 & \text{caso contrário}.
+\end{cases} \]
+
+Mostre que a sequência dos Estimadores de Máxima Verossimilhança (MLE) de $\theta$ é uma sequência consistente.
+
+\end{enumerate}
+
+\section*{Cap. 8.8 (Informação de Fisher)}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 5, pág. 527]{DeGroot:2014}} Suponha que uma variável aleatória $X$ possui a distribuição normal com média $0$ e variância desconhecida $\sigma^2 > 0$. Encontre a informação de Fisher $I(\sigma^2)$ em $X$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 4, pág 13]{Zheng:2020}} A distribuição de Rayleigh é definida como:
+
+\[ f(x|\theta) = \begin{cases}
+\frac{x}{\theta^2} \exp(\frac{x^2}{2\theta^2}) & \text{para } x \ge 0, \\
+0 & \text{caso contrário}.
+\end{cases} \]
+
+Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória dessa distribuição. Encontre a variância assintótica do Estimador de Máxima Verossimlhança (MLE) de $\theta$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 6, pág 13]{Zheng:2020}} Suponha que $X_1, \ldots, X_n$ formem uma amostra aleatória da distribuição exponencial com f.d.p 
+
+\[ f(x | \theta) = \frac{1}{\tau} \exp(\frac{-x}{\tau}), \ x \ge 0, \ \tau > 0. \]
+
+\begin{enumerate}
+    \item Encontre o MLE de $\tau$.
+
+    \item Encontre a distribuição assintótica do MLE.
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{}
+
+\nocite{*}
+% \bibliographystyle{IEEEtran}
+% \bibliography{references}
+\printbibliography
+\end{document}

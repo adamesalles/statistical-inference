@@ -17,3 +17,4 @@ Nessa página teremos as principais informações do curso de Inferência Estat�
 | Data     | Link        | Assunto                                |
 |----------|-------------|----------------------------------------|
 | 17/08/23 | [Lista 1](https://github.com/adamesalles/statistical-inference/blob/main/exercises/1.pdf) | Revisão de Probabilidade e Estimadores |
+| 30/08/23 | [Lista 2](https://github.com/adamesalles/statistical-inference/blob/main/exercises/2.pdf) | Invariância e Consistência do MLE e Informação de Fisher |
