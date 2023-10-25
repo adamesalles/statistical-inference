@@ -1,0 +1,390 @@
+\documentclass[leqno, 12pt]{article}
+
+
+\usepackage[brazil]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{cancel} 
+\usepackage[inline, shortlabels]{enumitem}
+\usepackage{xifthen} 
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{mathpazo}
+\usepackage[style=authoryear]{biblatex}
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+
+% \setlength{\parindent}{12 pt}
+
+\newenvironment{sol}
+{
+    \vspace{4mm}
+    \noindent\textbf{Resolução:}
+    \strut\newline
+    \smallskip
+    \hspace{-3.5mm}
+}
+% Objetos que aparecem *após* o ambiente; 
+% nestas configurações, estamos desenhando uma 
+% linha horizontal. 
+% (você pode, por exemplo, modificar 
+% ou remover este elemento gráfico) 
+{\noindent\rule{4cm}{.1mm}}
+
+% Tamanho dos símbolos matemáticos
+% \DeclareMathSizes{12}{12}{12}{9}
+
+\addbibresource{references.bib}
+
+
+
+\newtheorem{teo}{Teorema}[section] \newtheorem*{teo*}{Teorema}
+\newtheorem{prop}[teo]{Proposição} \newtheorem*{prop*}{Proposição}
+\newtheorem{lema}[teo]{Lemma} \newtheorem*{lema*}{Lema}
+\newtheorem{cor}[teo]{Corolário} \newtheorem*{cor*}{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{defi}[teo]{Definição} \newtheorem*{defi*}{Definição}
+\newtheorem{exem}[teo]{Exemplo} \newtheorem*{exem*}{Exemplo}
+\newtheorem{obs}[teo]{Observação} \newtheorem*{obs*}{Observação}
+\newtheorem*{hipo}{Hipóteses}
+\newtheorem*{nota}{Notação}
+
+\newcommand{\ds}{\displaystyle} \newcommand{\nl}{\newline}
+\newcommand{\eps}{\varepsilon} \newcommand{\ssty}{\scriptstyle}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cLN}{\mathcal{LN}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfb}{\mathbf{b}}
+
+\newcommand{\indep}{\perp \!\!\! \perp} %% indepence
+\newcommand{\pr}{\operatorname{Pr}} %% probability
+\newcommand{\vr}{\operatorname{Var}} %% variance
+\newcommand{\rs}{X_1, X_2, \ldots, X_n} %%  random sample
+\newcommand{\irs}{X_1, X_2, \ldots} %% infinite random sample
+\newcommand{\rsd}{x_1, x_2, \ldots, x_n} %%  random sample, realised
+\newcommand{\Sm}{\bar{X}_n} %%  sample mean, random variable
+\newcommand{\sm}{\bar{x}_n} %%  sample mean, realised
+\newcommand{\Sv}{\bar{S}^2_n} %%  sample variance, random variable
+\newcommand{\sv}{\bar{s}^2_n} %%  sample variance, realised
+\newcommand{\bX}{\boldsymbol{X}} %%  random sample, contracted form (bold)
+\newcommand{\bx}{\boldsymbol{x}} %%  random sample, realised, contracted form (bold)
+\newcommand{\bT}{\boldsymbol{T}} %%  Statistic, vector form (bold)
+\newcommand{\bt}{\boldsymbol{t}} %%  Statistic, realised, vector form (bold)
+\newcommand{\emv}{\hat{\theta}_{\text{EMV}}}
+
+\newcommand{\bvecc}[2]{%
+  \begin{bmatrix} #1 \\ #2  \end{bmatrix}
+}
+\newcommand{\bveccc}[3]{%
+  \begin{bmatrix} #1 \\ #2 \\ #3  \end{bmatrix}
+}
+
+
+
+
+
+\title{Lista de Exercícios 3}
+
+\author{Disciplina: Inferência Estatística \\
+        Professor: Philip Thompson \\
+        Monitores: Eduardo Adame \& Ezequiel Braga}
+
+\date{Setembro 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Caps. 7.2 (Distribuições a Priori e a Posteriori)}
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 1 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 2, pág. 393]{DeGroot:2014}} Suponha que a proporção $\theta$ de itens defeituosos em um grande lote fabricado seja conhecida como sendo 0.1 ou 0.2, e a função de probabilidade a priori (prior p.f.) de $\theta$ é a seguinte:
+
+\[\xi(0.1) = 0.7 \text{ e } \xi(0.2) = 0.3.\] 
+
+Suponha também que, quando oito itens são selecionados aleatoriamente do lote, é encontrado que exatamente dois deles são defeituosos. Determine a função de probabilidade a posteriori (posterior p.f.) de $\theta$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 2 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 3, pág. 394]{DeGroot:2014}} Suponha que o número de defeitos em um rolo de fita magnética de gravação segue uma distribuição de Poisson, para a qual a média $\lambda$ é igual a 1 ou 1.5, e a função de probabilidade a priori (prior p.f.) de $\lambda$ é a seguinte:
+
+\[\xi(1) = 0.4 \text{ e } \xi(1.5) = 0.6.\]
+
+Se um rolo de fita selecionado aleatoriamente for encontrado com três defeitos, qual é a função de probabilidade a posteriori (posterior p.f.) de $\lambda$?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 3 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 10, pág. 394]{DeGroot:2014}} Suponha que uma única observação $X$ deve ser retirada da distribuição uniforme no intervalo $[\theta - \frac{1}{2}, \theta + \frac{1}{2}]$, o valor de $\theta$ é desconhecido, e a distribuição a priori de $\theta$ é uniforme no intervalo $[10, 20]$. Se o valor observado de $X$ é 12, qual é a distribuição a posteriori de $\theta$?
+
+
+\end{enumerate}
+
+\section*{Cap. 7.3 (Distribuições a Priori Conjugadas)}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 4 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 17, pág. 407]{DeGroot:2014}} Suponha que o número de minutos que uma pessoa deve esperar por um ônibus todas as manhãs segue uma distribuição uniforme no intervalo $[0, \theta]$, onde o valor do ponto final $\theta$ é desconhecido. Suponha também que a função de densidade de probabilidade (p.d.f.) a priori de $\theta$ é a seguinte:
+
+\[
+\xi(\theta) =
+\begin{cases}
+\frac{192}{\theta^4} & \text{para } \theta \geq 4, \\
+0 & \text{caso contrário.}
+\end{cases}
+\]
+
+Se os tempos de espera observados em três manhãs consecutivas são 5, 3 e 8 minutos, qual é a função de densidade de probabilidade a posteriori (posterior p.d.f.) de $\theta$?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 5 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 19, pág. 407]{DeGroot:2014}} Suponha que \(\rs\) formam uma amostra aleatória de uma distribuição para a qual a função de densidade de probabilidade \(f(x|\theta)\) é a seguinte:
+
+\[
+f(x|\theta) =
+\begin{cases}
+\theta x^{\theta-1} & \text{para } 0 < x < 1, \\
+0 & \text{caso contrário.}
+\end{cases}
+\]
+
+Suponha também que o valor do parâmetro \(\theta\) é desconhecido (\(\theta > 0\)), e a distribuição a priori de \(\theta\) é a distribuição gama com parâmetros \(\alpha\) e \(\beta\) (\(\alpha > 0\) e \(\beta > 0\)). Determine a média e a variância da distribuição a posteriori de \(\theta\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 6 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 21, pág. 407]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória da distribuição exponencial com parâmetro \(\theta\). Seja a distribuição a priori de \(\theta\) imprópria com ``p.d.f.'' \(\frac{1}{\theta}\) para \(\theta > 0\). Encontre a distribuição a posteriori de \(\theta\) e mostre que a média a posteriori de \(\theta\) é \(\frac{1}{\bar{X}_n}\).
+
+\end{enumerate}
+
+\section*{Cap. 7.4 (Estimadores de Bayes)}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 7 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 2, pág. 416]{DeGroot:2014}} Suponha que a proporção $\theta$ de itens defeituosos em um grande envio seja desconhecida, e a distribuição a priori de $\theta$ seja a distribuição beta com parâmetros $\alpha = 5$ e $\beta = 10$. Suponha também que 20 itens sejam selecionados aleatoriamente do envio e que exatamente um desses itens seja encontrado defeituoso. Se a função de perda de erro quadrático for utilizada, qual é o estimador de Bayes de $\theta$?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 8 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 4, pág. 416]{DeGroot:2014}} Suponha que uma amostra aleatória de tamanho \(n\) seja retirada da distribuição de Bernoulli com parâmetro \( \theta \), que é desconhecido, e que a distribuição a priori de \( \theta \) seja uma distribuição beta cuja média é \( \mu_0 \). Mostre que a média da distribuição a posteriori de \( \theta \) será uma média ponderada com a forma \( \gamma_n \bar X_n + (1 - \gamma_n) \mu_0 \), e mostre que \( \gamma_n \rightarrow 1 \) conforme \( n \rightarrow \infty \).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 9 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 11, pág. 416]{DeGroot:2014}} Suponha que uma amostra aleatória de tamanho \( n \) seja retirada de uma distribuição exponencial para a qual o valor do parâmetro \( \theta \) é desconhecido, a distribuição a priori de \( \theta \) é uma distribuição gama especificada, e o valor de \( \theta \) deve ser estimado usando a função de perda de erro quadrático. Mostre que os estimadores de Bayes, para \( n = 1, 2, \ldots \), formam uma sequência consistente de estimadores de \( \theta \).
+
+\end{enumerate}
+
+\section*{Cap. 7.7 (Estatística Suficiente)}
+
+Nos dois primeiros exercícios a seguir, suponha que as variáveis aleatórias \(\rs\) formem uma amostra aleatória de tamanho \(n\) da distribuição especificada no exercício e mostre que a estatística \(T\) especificada é uma estatística suficiente para o parâmetro.
+
+\begin{enumerate}
+\setcounter{enumi}{9}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 10 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 4, pág. 448]{DeGroot:2014}} A distribuição normal, na qual a média \(\mu\) é conhecida e a variância \(\sigma^2 > 0\) é desconhecida; \(T = \sum_{i=1}^{n}(X_i - \mu)^2\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 11 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 7, pág. 448]{DeGroot:2014}} A distribuição beta com parâmetros \(\alpha\) e \(\beta\), onde o valor de \(\beta\) é conhecido e o valor de \(\alpha\) é desconhecido (\(\alpha > 0\)); \(T = \prod_{i=1}^{n} X_i\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 12 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 16, pág. 448]{DeGroot:2014}} Seja \(\theta\) em um espaço de parâmetros \(\Omega\), igual a um intervalo de números reais (possivelmente não limitado). Deixe \(X\) ter uma f.d.p. ou f.m.p. \(f_n(x|\theta)\) condicional a \(\theta\). Seja \(T = r(X)\) uma estatística. Assuma que \(T\) é suficiente. Prove que, para cada possível f.d.p. a priori para \(\theta\), a f.d.p. a posteriori de \(\theta\) dada \(X = x\) depende de \(x\) apenas através de \(r(x)\).
+
+
+
+\end{enumerate}
+
+\section*{Cap. 7.8 (Estatística Suficiente Mínima)}
+
+\begin{enumerate}
+\setcounter{enumi}{12}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 13 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 8, pág. 455]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de uma distribuição exponencial para a qual o valor do parâmetro \(\beta\) é desconhecido (\(\beta > 0\)). O MLE (Estimador de Máxima Verossimilhança) de \(\beta\) é uma estatística minimamente suficiente?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 14 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 12, pág. 455]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de uma distribuição para a qual a f.d.p. é a seguinte:
+
+\[
+f(x|\theta) =
+\begin{cases}
+\frac{2x}{\theta^2} & \text{para } 0 \leq x \leq \theta, \\
+0 & \text{caso contrário.}
+\end{cases}
+\]
+
+Aqui, o valor do parâmetro \(\theta\) é desconhecido (\(\theta > 0\)). Determine o M.L.E. (Estimador de Máxima Verossimilhança) da mediana dessa distribuição e mostre que esse estimador é uma estatística minimamente suficiente para \(\theta\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 15 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 16, pág. 455]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de uma distribuição de Poisson para a qual o valor da média \(\lambda\) é desconhecido, e que a distribuição a prior de \(\lambda\) seja uma determinada distribuição gama especificada. O estimador de Bayes de \(\lambda\) em relação à função de perda de erro quadrático é uma estatística minimamente suficiente?
+
+\end{enumerate}
+
+\section*{Cap. 7.9 (Custos e Riscos de Estimadores)}
+
+\begin{enumerate}
+\setcounter{enumi}{15}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 16 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 2, pág. 460]{DeGroot:2014}} Suponha que as variáveis aleatórias \(\rs\) formem uma amostra aleatória de tamanho \(n\) (\(n \geq 2\)) da distribuição uniforme no intervalo \([0, \theta]\), onde o valor do parâmetro \(\theta\) é desconhecido (\(\theta > 0\)) e deve ser estimado. Suponha também que, para todo estimador \(\delta(\rs)\), o M.S.E. \(R(\theta, \delta)\) seja definido como \(R(\theta, \delta) = \mathbb{E}_\theta[ (\delta(\bX) - h(\theta))^2]\). Explique por que o estimador \(\delta_1(\rs) = 2X_n\) é inadmissível.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 17 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 3, pág. 460]{DeGroot:2014}} Considere novamente as condições do exercício anterior e seja o estimador \(\delta_1\)  definido anteriormente. Determine o valor do M.S.E. \(R(\theta, \delta_1)\) para \(\theta > 0\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 18 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 6, pág. 460]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de tamanho \(n\) (\(n \geq 2\)) da distribuição gama com parâmetros \(\alpha\) e \(\beta\), onde o valor de \(\alpha\) é desconhecido (\(\alpha > 0\)) e o valor de \(\beta\) é conhecido. Explique por que \(\bar X_n\) é um estimador inadmissível da média dessa distribuição quando a função de perda de erro quadrático é usada.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 19 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 10, pág. 461]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de uma distribuição para a qual a f.d.p. ou a f.m.p. é \(f(x|\theta)\), onde \(\theta \in \Omega \). Suponha que o valor de \(\theta\) deve ser estimado, e que \(T\) é uma estatística suficiente para \(\theta\). Seja \(\delta\) um estimador arbitrário de \(\theta\), e \(\delta_0\) outro estimador definido pela relação \(\delta_0 = \mathbb{E}(\delta|T)\). Mostre que para cada valor de \(\theta \in \Omega \), 
+
+\[\mathbb{E}_{\theta}(|\delta_0 - \theta|) \leq \mathbb{E}_{\theta}(|\delta - \theta|).\]
+
+
+\end{enumerate}
+
+\section*{Cap. 8.7 (Estimadores Não-viesados)}
+
+\begin{enumerate}
+\setcounter{enumi}{19}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 20 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 4, pág. 512]{DeGroot:2014}} Suponha que uma variável aleatória \(X\) tenha a distribuição geométrica (com suporte em \(\{0,1,2, \cdots\}\)) com parâmetro desconhecido \(p\). Encontre uma estatística \(\delta(X)\) que seja um estimador não-viesado de \(1/p\).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 21 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 11, pág. 513]{DeGroot:2014}} Suponha que um determinado medicamento deve ser administrado a dois tipos diferentes de animais, A e B. Sabe-se que a resposta média dos animais do tipo A é a mesma que a resposta média dos animais do tipo B, mas o valor comum \(\theta\) dessa média é desconhecido e deve ser estimado. Também é sabido que a variância da resposta dos animais do tipo A é quatro vezes maior do que a variância da resposta dos animais do tipo B. Sejam \(X_1, X_2, \ldots, X_m\) as respostas de uma amostra aleatória de \(m\) animais do tipo A, e \(Y_1, Y_2, \ldots, Y_n\) as respostas de uma amostra aleatória independente de \(n\) animais do tipo B. Finalmente, considere o estimador \(\hat{\theta} = \alpha \bar{X}_m + (1 - \alpha) \bar{Y}_n\).
+
+\begin{enumerate}
+    \item Para quais valores de \(\alpha, m\) e \(n\) \(\hat{\theta}\) é um estimador não-viesado de \(\theta\)?
+
+    \item Para valores fixos de $m$ e $n$, qual valor de $\alpha$ gera um estimador não-viesado com variância mínima?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 22 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 13, pág. 513]{DeGroot:2014}} Suponha que \(\rs\) formem uma amostra aleatória de uma distribuição para a qual a f.d.p. ou a f.m.p. é \(f(x|\theta)\), onde o valor do parâmetro \(\theta\) é desconhecido. Sejam \(\bX = (\rs)\) e \(T\) uma estatística. Suponha que \(\delta(\bX)\) seja um estimador não tendencioso de \(\theta\) tal que \(\mathbb{E}_{\theta}[\delta(\bX)|T]\) não depende de \(\theta\). (Se \(T\) for uma estatística suficiente, como definido na Seção 7.7, isso será verdade para qualquer estimador \(\delta\). Essa condição também se aplica a outros exemplos.) Seja \(\delta_0(T)\) a média condicional de \(\delta(\bX)\) dado \(T\).
+
+\begin{enumerate}
+    \item Mostre que $\delta_0(T)$ também é um estimador não-viesado de $\theta$.
+
+    \item Mostre que $\vr_\theta(\delta_0) \le \vr_\theta(\delta)$, para todos os valores possíveis de $\theta$.
+\end{enumerate}
+
+\end{enumerate}
+
+\section*{Caps. 8.8 (Informação de Fisher e Estimadores Eficientes)}
+
+\begin{enumerate}
+\setcounter{enumi}{22}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 23 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 7, pág. 527]{DeGroot:2014}}
+Suponha que \(\rs\) formem uma amostra aleatória da distribuição de Bernoulli com parâmetro desconhecido \(p\). Mostre que \(\bar X_n\) é um estimador eficiente de \(p\).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Exercício 24 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \textbf{\parencite[ex. 10, pág. 527]{DeGroot:2014}}
+Suponha que \(\rs\) formem uma amostra aleatória da distribuição normal com média 0 e desvio padrão desconhecido \(\sigma > 0\). Encontre o limite inferior especificado pela desigualdade da informação de Fisher para a variância de qualquer estimador não tendencioso de \(\log \sigma\).
+
+
+\end{enumerate}
+
+\nocite{*}
+\newpage
+\printbibliography
+\end{document}
