@@ -26,6 +26,6 @@ Nessa página temos as principais informações do curso de Inferência Estatís
 | Data | Link | Soluções |
 |------|------|----------|
 | 06/10/20 | [Prova A1](https://github.com/adamesalles/statistical-inference/blob/main/exams/A1-2023.pdf) | [Soluções](ttps://github.com/adamesalles/statistical-inference/blob/main/exams/A1-2023-Solutions.pdf) |
-| 24/11/23 | [Prova A2](https://github.com/adamesalles/statistical-inference/blob/main/exams/A1-2024.pdf) | Soluções (sugestões) |
+| 24/11/23 | [Prova A2](https://github.com/adamesalles/statistical-inference/blob/main/exams/A2-2023.pdf) | Soluções (sugestões) |
 
 As provas A1 serão entregues no dia 25/10/23 durante a aula.
